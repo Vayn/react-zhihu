@@ -225,8 +225,8 @@ var TopicBox = React.createClass({displayName: "TopicBox",
             React.createElement("div", null, 
             React.createElement("div", {className: "header"}, 
                 React.createElement("div", {className: "am-g"}, 
-                    React.createElement("h1", null, "知乎日报Rv"), 
-                    React.createElement("p", null, "每日速递，来自知乎")
+                    React.createElement("h1", null, "矢口乎日报Rv"), 
+                    React.createElement("p", null, "每日速递，请阅")
                 )
             ), 
             React.createElement("div", {className: "am-g"}, 

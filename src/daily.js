@@ -225,8 +225,8 @@ var TopicBox = React.createClass({
             <div>
             <div className="header">
                 <div className="am-g">
-                    <h1>知乎日报Rv</h1>
-                    <p>每日速递，来自知乎</p>
+                    <h1>矢口乎日报Rv</h1>
+                    <p>每日速递，请阅</p>
                 </div>
             </div>
             <div className="am-g">
