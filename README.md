@@ -1,5 +1,5 @@
-#daily-rv
-知乎日报 React Version
+# daily-rv
+矢口乎日报 React Version
 
 ## Credit
 + [AmazeUI](http://amazeui.org/)
