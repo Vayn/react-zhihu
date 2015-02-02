@@ -232,7 +232,7 @@ var TopicBox = React.createClass({
             <div className="am-g">
                 <div className="am-u-lg-6 am-u-md-8 am-u-sm-centered">
                     <TopicList data={this.state.data} />
-                    <p>© 2014 HeZhi, Inc. Licensed under MIT license.</p>
+                    <p>© 2014 <a href="https://gitcafe.com/Hz/daily-rv">HeZhi, Inc. Licensed under MIT license.</a></p>
                 </div>
             </div>
             </div>

@@ -232,7 +232,7 @@ var TopicBox = React.createClass({displayName: "TopicBox",
             React.createElement("div", {className: "am-g"}, 
                 React.createElement("div", {className: "am-u-lg-6 am-u-md-8 am-u-sm-centered"}, 
                     React.createElement(TopicList, {data: this.state.data}), 
-                    React.createElement("p", null, "© 2014 HeZhi, Inc. Licensed under MIT license.")
+                    React.createElement("p", null, "© 2014 ", React.createElement("a", {href: "https://gitcafe.com/Hz/daily-rv"}, "HeZhi, Inc. Licensed under MIT license."))
                 )
             )
             )
