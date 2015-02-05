@@ -156,12 +156,14 @@ var Topic = React.createClass({
                 <span
                     onClick={this._handleClick.bind(this, "toggleLongComment")}
                     className="am-badge am-badge-success"
+                    title="阅读长评论"
                 >
                     {longText}
                 </span>
                 <span
                     onClick={this._handleClick.bind(this, "toggleShortComment")}
                     className="am-badge am-badge-success"
+                    title="阅读短评论"
                 >
                     {shortText}
                 </span>
@@ -199,7 +201,7 @@ var TopicList = React.createClass({
 var TopicBox = React.createClass({
 
     getInitialState: function () {
-        return {data: []};
+        return {data: [], loaded: false};
     },
 
     componentDidMount: function () {
@@ -212,7 +214,10 @@ var TopicBox = React.createClass({
             url: this.props.url,
             dataType: 'json',
             success: function (data) {
-                this.setState({data: data.query.results.stories});
+                this.setState({
+                    data: data.query.results.stories,
+                    loaded: true
+                });
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -221,22 +226,51 @@ var TopicBox = React.createClass({
     },
 
     render: function () {
+        var footer = (
+            <p>© 2014 <a href="https://gitcafe.com/Hz/daily-rv">HeZhi, Inc. Licensed under MIT license.</a></p>
+        );
+
         return (
-            <div>
+        <div>
             <div className="header">
                 <div className="am-g">
                     <h1>矢口乎日报Rv</h1>
-                    <p>每日速递，请阅</p>
+                    {this.state.loaded ? <p>每日速递，请阅</p> : null}
                 </div>
             </div>
-            <div className="am-g">
+            <div id="main" className="am-g">
                 <div className="am-u-lg-6 am-u-md-8 am-u-sm-centered">
                     <TopicList data={this.state.data} />
-                    <p>© 2014 <a href="https://gitcafe.com/Hz/daily-rv">HeZhi, Inc. Licensed under MIT license.</a></p>
+                    {this.state.loaded ? footer : <Spinner loaded={this.state.loaded} />}
                 </div>
             </div>
-            </div>
+        </div>
         );
+    }
+
+});
+
+var Spinner = React.createClass({
+
+    render: function () {
+        var loaded = this.props.loaded;
+        if (loaded) {
+            return null;
+        } else {
+            return (
+                <div className="spinner cube-grid">
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                </div>
+            );
+        }
     }
 
 });

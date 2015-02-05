@@ -155,13 +155,15 @@ var Topic = React.createClass({displayName: "Topic",
             React.createElement("li", null, 
                 React.createElement("span", {
                     onClick: this._handleClick.bind(this, "toggleLongComment"), 
-                    className: "am-badge am-badge-success"
+                    className: "am-badge am-badge-success", 
+                    title: "阅读长评论"
                 }, 
                     longText
                 ), 
                 React.createElement("span", {
                     onClick: this._handleClick.bind(this, "toggleShortComment"), 
-                    className: "am-badge am-badge-success"
+                    className: "am-badge am-badge-success", 
+                    title: "阅读短评论"
                 }, 
                     shortText
                 ), 
@@ -199,7 +201,7 @@ var TopicList = React.createClass({displayName: "TopicList",
 var TopicBox = React.createClass({displayName: "TopicBox",
 
     getInitialState: function () {
-        return {data: []};
+        return {data: [], loaded: false};
     },
 
     componentDidMount: function () {
@@ -212,7 +214,10 @@ var TopicBox = React.createClass({displayName: "TopicBox",
             url: this.props.url,
             dataType: 'json',
             success: function (data) {
-                this.setState({data: data.query.results.stories});
+                this.setState({
+                    data: data.query.results.stories,
+                    loaded: true
+                });
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -221,22 +226,51 @@ var TopicBox = React.createClass({displayName: "TopicBox",
     },
 
     render: function () {
+        var footer = (
+            React.createElement("p", null, "© 2014 ", React.createElement("a", {href: "https://gitcafe.com/Hz/daily-rv"}, "HeZhi, Inc. Licensed under MIT license."))
+        );
+
         return (
-            React.createElement("div", null, 
+        React.createElement("div", null, 
             React.createElement("div", {className: "header"}, 
                 React.createElement("div", {className: "am-g"}, 
                     React.createElement("h1", null, "矢口乎日报Rv"), 
-                    React.createElement("p", null, "每日速递，请阅")
+                    this.state.loaded ? React.createElement("p", null, "每日速递，请阅") : null
                 )
             ), 
-            React.createElement("div", {className: "am-g"}, 
+            React.createElement("div", {id: "main", className: "am-g"}, 
                 React.createElement("div", {className: "am-u-lg-6 am-u-md-8 am-u-sm-centered"}, 
                     React.createElement(TopicList, {data: this.state.data}), 
-                    React.createElement("p", null, "© 2014 ", React.createElement("a", {href: "https://gitcafe.com/Hz/daily-rv"}, "HeZhi, Inc. Licensed under MIT license."))
+                    this.state.loaded ? footer : React.createElement(Spinner, {loaded: this.state.loaded})
                 )
             )
-            )
+        )
         );
+    }
+
+});
+
+var Spinner = React.createClass({displayName: "Spinner",
+
+    render: function () {
+        var loaded = this.props.loaded;
+        if (loaded) {
+            return null;
+        } else {
+            return (
+                React.createElement("div", {className: "spinner cube-grid"}, 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"}), 
+                    React.createElement("div", {className: "cube"})
+                )
+            );
+        }
     }
 
 });

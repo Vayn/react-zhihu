@@ -14,3 +14,15 @@
 .am-badge {
     margin-top: 1.2rem;
 }
+
+#main {
+    position: relative;
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -14px;
+    margin-top: -14px;
+}
