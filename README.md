@@ -1,5 +1,5 @@
 # daily-rv
-矢口乎日报 React Version
+[矢口乎日报 React Version](http://hz.gitcafe.io/daily-rv)
 
 ## Credit
 + [AmazeUI](http://amazeui.org/)
