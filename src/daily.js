@@ -258,16 +258,8 @@ var Spinner = React.createClass({
             return null;
         } else {
             return (
-                <div className="spinner cube-grid">
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
-                    <div className="cube"></div>
+                <div className="spinner">
+                    <img alt="loading" src="assets/i/loading.gif"/>
                 </div>
             );
         }

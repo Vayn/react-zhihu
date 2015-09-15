@@ -258,16 +258,8 @@ var Spinner = React.createClass({displayName: "Spinner",
             return null;
         } else {
             return (
-                React.createElement("div", {className: "spinner cube-grid"}, 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"}), 
-                    React.createElement("div", {className: "cube"})
+                React.createElement("div", {className: "spinner"}, 
+                    React.createElement("img", {alt: "loading", src: "assets/i/loading.gif"})
                 )
             );
         }
