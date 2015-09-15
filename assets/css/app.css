@@ -19,10 +19,19 @@
     position: relative;
 }
 
+.cursor {
+    cursor: pointer;
+    cursor: hand;
+}
+
 .spinner {
     position: absolute;
     left: 50%;
     top: 50%;
     margin-left: -14px;
     margin-top: -14px;
+}
+
+.notice {
+    padding: 1px;
 }

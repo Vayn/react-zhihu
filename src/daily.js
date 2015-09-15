@@ -10,7 +10,7 @@ var Notice = React.createClass({
         text = "网络错误，请稍后再试";
         break;
       case "loading":
-        text = "加载评论中...";
+        text = <Spinner loaded={false} />;
         break;
       case "noComment":
         text = "暂无评论";
@@ -23,8 +23,8 @@ var Notice = React.createClass({
   render: function() {
     return (
       <div className="am-u-sm-11 am-u-sm-centered">
-          <span className={"notice notice--" + this.props.type}>
-            <p>{this._statusText(this.props.type)}</p>
+          <span className={"notice notice--" + this.props.status}>
+            <p>{this._statusText(this.props.status)}</p>
           </span>
       </div>
     );
@@ -125,7 +125,7 @@ var CommentList = React.createClass({
         }
 
         return (
-            <Notice type={this.state.status} />
+            <Notice status={this.state.status} />
         );
     }
 
@@ -155,14 +155,14 @@ var Topic = React.createClass({
             <li>
                 <span
                     onClick={this._handleClick.bind(this, "toggleLongComment")}
-                    className="am-badge am-badge-success"
+                    className="am-badge am-badge-success cursor"
                     title="阅读长评论"
                 >
                     {longText}
                 </span>
                 <span
                     onClick={this._handleClick.bind(this, "toggleShortComment")}
-                    className="am-badge am-badge-success"
+                    className="am-badge am-badge-success cursor"
                     title="阅读短评论"
                 >
                     {shortText}

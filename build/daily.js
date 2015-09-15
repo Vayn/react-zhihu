@@ -10,7 +10,7 @@ var Notice = React.createClass({displayName: "Notice",
         text = "网络错误，请稍后再试";
         break;
       case "loading":
-        text = "加载评论中...";
+        text = React.createElement(Spinner, {loaded: false});
         break;
       case "noComment":
         text = "暂无评论";
@@ -23,8 +23,8 @@ var Notice = React.createClass({displayName: "Notice",
   render: function() {
     return (
       React.createElement("div", {className: "am-u-sm-11 am-u-sm-centered"}, 
-          React.createElement("span", {className: "notice notice--" + this.props.type}, 
-            React.createElement("p", null, this._statusText(this.props.type))
+          React.createElement("span", {className: "notice notice--" + this.props.status}, 
+            React.createElement("p", null, this._statusText(this.props.status))
           )
       )
     );
@@ -125,7 +125,7 @@ var CommentList = React.createClass({displayName: "CommentList",
         }
 
         return (
-            React.createElement(Notice, {type: this.state.status})
+            React.createElement(Notice, {status: this.state.status})
         );
     }
 
@@ -155,14 +155,14 @@ var Topic = React.createClass({displayName: "Topic",
             React.createElement("li", null, 
                 React.createElement("span", {
                     onClick: this._handleClick.bind(this, "toggleLongComment"), 
-                    className: "am-badge am-badge-success", 
+                    className: "am-badge am-badge-success cursor", 
                     title: "阅读长评论"
                 }, 
                     longText
                 ), 
                 React.createElement("span", {
                     onClick: this._handleClick.bind(this, "toggleShortComment"), 
-                    className: "am-badge am-badge-success", 
+                    className: "am-badge am-badge-success cursor", 
                     title: "阅读短评论"
                 }, 
                     shortText
