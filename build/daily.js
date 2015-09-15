@@ -10,7 +10,7 @@ var Notice = React.createClass({displayName: "Notice",
         text = "网络错误，请稍后再试";
         break;
       case "loading":
-        text = React.createElement(Spinner, {loaded: false});
+        text = "加载评论中...";
         break;
       case "noComment":
         text = "暂无评论";
